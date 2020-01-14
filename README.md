@@ -19,7 +19,8 @@ eg.,
 ```
 
 network names, versions, corresponding folder:
-|name|version||
+
+|name|version|folder|
 |-|-|-|
 |`beta`|`v2`|`beta`|
 |`testnet`|`v3`|`beta`|
