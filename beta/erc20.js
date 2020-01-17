@@ -21,8 +21,8 @@ const matic = new Matic({
     maticProvider: MaticNetwork.RPC,
     parentProvider: MainNetwork.RPC,
     rootChain: MainNetwork.Contracts.RootChain,
-    withdrawManager: MainNetwork.Contracts.WithdrawManager,
-    depositManager: MainNetwork.Contracts.DepositManager,
+    withdrawManager: MainNetwork.Contracts.WithdrawManagerProxy,
+    depositManager: MainNetwork.Contracts.DepositManagerProxy,
     registry: MainNetwork.Contracts.Registry
 })
 
@@ -112,14 +112,14 @@ async function testDeposit(token, account) {
 
     await matic.approveERC20TokensForDeposit(token, amount, {
         from: account, 
-        gas: 8000000,
-        gasPrice: '10000000000'
+        // gas: 8000000,
+        // gasPrice: '10000000000'
     }).then((r) => console.log('approval succesful, ', r.transactionHash))
 
     await matic.depositERC20ForUser(token, account, amount, { 
         from: account, 
-        gas: 8000000,
-        gasPrice: '100000000000'
+        // gas: 8000000,
+        // gasPrice: '100000000000'
     }).then((r) => {
         console.log('deposit successful; tx hash, ', r.transactionHash)
     })
@@ -179,3 +179,5 @@ async function test() {
 }
 
 test()
+
+// console.log(MainNetwork.Contracts.DepositManager)
